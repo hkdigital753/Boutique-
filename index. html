@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Boutique en ligne</title>
+
+    <meta
+        name="description"
+        content="Découvrez nos produits et passez facilement votre commande en ligne."
+    >
+
+    <!-- Feuille de style -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+    <header class="header">
+
+        <div class="container header-content">
+
+            <a href="#" class="logo">
+                Ma Boutique
+            </a>
+
+            <nav class="navigation">
+                <a href="#accueil">Accueil</a>
+                <a href="#produits">Produits</a>
+                <a href="#contact">Contact</a>
+            </nav>
+
+            <button
+                type="button"
+                class="cart-button"
+                id="openCart"
+                aria-label="Ouvrir le panier"
+            >
+                🛒
+                <span>Panier</span>
+                <strong id="cartCount">0</strong>
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         CONTENU PRINCIPAL
+    ========================== -->
+    <main>
+
+        <!-- =========================
+             SECTION ACCUEIL
+        ========================== -->
+        <section class="hero" id="accueil">
+
+            <div class="container hero-content">
+
+                <div class="hero-text">
+
+                    <span class="hero-label">
+                        BIENVENUE DANS NOTRE BOUTIQUE
+                    </span>
+
+                    <h1>
+                        Découvrez nos produits
+                    </h1>
+
+                    <p>
+                        Retrouvez une sélection de produits de qualité
+                        et passez votre commande simplement en ligne.
+                    </p>
+
+                    <a href="#produits" class="primary-button">
+                        Découvrir les produits
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             SECTION PRODUITS
+        ========================== -->
+        <section class="products-section" id="produits">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <span class="section-label">
+                        NOTRE CATALOGUE
+                    </span>
+
+                    <h2>
+                        Nos produits
+                    </h2>
+
+                    <p>
+                        Choisissez un produit pour découvrir ses détails
+                        et l'ajouter à votre panier.
+                    </p>
+
+                </div>
+
+
+                <!-- RECHERCHE -->
+                <div class="shop-tools">
+
+                    <div class="search-box">
+
+                        <input
+                            type="search"
+                            id="searchInput"
+                            placeholder="Rechercher un produit..."
+                            aria-label="Rechercher un produit"
+                        >
+
+                    </div>
+
+
+                    <!-- CATÉGORIES -->
+                    <div class="categories" id="categories">
+
+                        <button
+                            type="button"
+                            class="category-button active"
+                            data-category="Tous"
+                        >
+                            Tous
+                        </button>
+
+                        <button
+                            type="button"
+                            class="category-button"
+                            data-category="Vêtements"
+                        >
+                            Vêtements
+                        </button>
+
+                        <button
+                            type="button"
+                            class="category-button"
+                            data-category="Chaussures"
+                        >
+                            Chaussures
+                        </button>
+
+                        <button
+                            type="button"
+                            class="category-button"
+                            data-category="Sacs"
+                        >
+                            Sacs
+                        </button>
+
+                        <button
+                            type="button"
+                            class="category-button"
+                            data-category="Accessoires"
+                        >
+                            Accessoires
+                        </button>
+
+                        <button
+                            type="button"
+                            class="category-button"
+                            data-category="Parfums"
+                        >
+                            Parfums
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- GRILLE DES PRODUITS -->
+                <div
+                    class="products-grid"
+                    id="productsGrid"
+                >
+                    <!--
+                        Les produits seront automatiquement
+                        générés par JavaScript.
+                    -->
+                </div>
+
+
+                <!-- MESSAGE SI AUCUN PRODUIT -->
+                <div
+                    class="no-products"
+                    id="noProducts"
+                    hidden
+                >
+                    <h3>Aucun produit trouvé</h3>
+
+                    <p>
+                        Essayez une autre recherche ou une autre catégorie.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             SECTION CONTACT
+        ========================== -->
+        <section class="contact-section" id="contact">
+
+            <div class="container">
+
+                <div class="contact-box">
+
+                    <div class="contact-text">
+
+                        <span class="section-label">
+                            BESOIN D'AIDE ?
+                        </span>
+
+                        <h2>
+                            Une question sur un produit ?
+                        </h2>
+
+                        <p>
+                            Contactez-nous directement sur WhatsApp
+                            pour obtenir plus d'informations.
+                        </p>
+
+                    </div>
+
+                    <a
+                        href="#"
+                        class="whatsapp-button"
+                        id="contactWhatsApp"
+                    >
+                        💬 Nous contacter sur WhatsApp
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         PANIER
+    ========================== -->
+
+    <div
+        class="cart-overlay"
+        id="cartOverlay"
+        hidden
+    ></div>
+
+
+    <aside
+        class="cart-sidebar"
+        id="cartSidebar"
+        aria-hidden="true"
+    >
+
+        <div class="cart-header">
+
+            <h2>
+                Mon panier
+            </h2>
+
+            <button
+                type="button"
+                class="close-cart"
+                id="closeCart"
+                aria-label="Fermer le panier"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div
+            class="cart-items"
+            id="cartItems"
+        >
+            <!--
+                Les articles du panier
+                seront générés par JavaScript.
+            -->
+        </div>
+
+
+        <div class="cart-empty" id="cartEmpty">
+
+            <div class="cart-empty-icon">
+                🛒
+            </div>
+
+            <h3>
+                Votre panier est vide
+            </h3>
+
+            <p>
+                Ajoutez des produits pour commencer votre commande.
+            </p>
+
+        </div>
+
+
+        <div class="cart-footer">
+
+            <div class="cart-total">
+
+                <span>
+                    Total
+                </span>
+
+                <strong id="cartTotal">
+                    0 FCFA
+                </strong>
+
+            </div>
+
+            <button
+                type="button"
+                class="checkout-button"
+                id="checkoutWhatsApp"
+            >
+                Commander sur WhatsApp
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =========================
+         FENÊTRE PRODUIT
+    ========================== -->
+
+    <div
+        class="product-modal"
+        id="productModal"
+        hidden
+    >
+
+        <div
+            class="product-modal-overlay"
+            id="productModalOverlay"
+        ></div>
+
+        <div
+            class="product-modal-content"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modalProductName"
+        >
+
+            <button
+                type="button"
+                class="product-modal-close"
+                id="closeProductModal"
+                aria-label="Fermer"
+            >
+                ×
+            </button>
+
+
+            <div class="product-modal-image">
+
+                <img
+                    id="modalProductImage"
+                    src=""
+                    alt=""
+                >
+
+            </div>
+
+
+            <div class="product-modal-info">
+
+                <span
+                    class="product-modal-category"
+                    id="modalProductCategory"
+                ></span>
+
+                <h2 id="modalProductName"></h2>
+
+                <p
+                    class="product-modal-description"
+                    id="modalProductDescription"
+                ></p>
+
+                <div
+                    class="product-modal-price"
+                    id="modalProductPrice"
+                >
+                </div>
+
+
+                <!-- QUANTITÉ -->
+
+                <div class="quantity-selector">
+
+                    <span>
+                        Quantité
+                    </span>
+
+                    <div class="quantity-controls">
+
+                        <button
+                            type="button"
+                            id="decreaseQuantity"
+                        >
+                            −
+                        </button>
+
+                        <strong id="productQuantity">
+                            1
+                        </strong>
+
+                        <button
+                            type="button"
+                            id="increaseQuantity"
+                        >
+                            +
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="add-to-cart-button"
+                    id="addToCart"
+                >
+                    Ajouter au panier
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         PIED DE PAGE
+    ========================== -->
+
+    <footer class="footer">
+
+        <div class="container footer-content">
+
+            <div>
+                <strong>
+                    Ma Boutique
+                </strong>
+
+                <p>
+                    Votre boutique en ligne.
+                </p>
+            </div>
+
+            <p>
+                © 2026 Ma Boutique. Tous droits réservés.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script src="js/script.js"></script>
+
+</body>
+</html>
